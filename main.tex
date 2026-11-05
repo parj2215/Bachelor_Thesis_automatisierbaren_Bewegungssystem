@@ -1,0 +1,59 @@
+%% Created by Jonas Thern
+% Modified by Parjanya Dalal
+% Version 3.1
+% Weitere Infos in Bedienungshinweise.pdf
+\UseRawInputEncoding
+\documentclass[a4paper,12pt,oneside]{article}
+\input{misc/Background/Settings}
+\input{misc/Setup}
+\input{misc/Einheitenmacros}
+\input{misc/Background/Symbolverzeichnis}
+\input{Kapitel/00-Symbole}
+\addbibresource{Literatur.bib}
+\hypersetup{pdfsubject={Zusammenfassung}
+             ,pdftitle={\Titel}
+             ,pdfauthor={\Autor}
+             ,pdfkeywords={\Stichworte}
+             }
+
+%Titelseite:
+%HAW-grün
+\input{misc/Background/HAW_Stil/Titelpage_haw_stil}
+
+%andere Version
+%\input{misc/Background/titlepage}
+
+  %%DOKUMENTBEGINN           
+\begin{document}
+\input{misc/Background/Dokumentbeginn}
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[L]{HEADER-TEST-LEFT}
+%\fancyhead[R]{\thepage}
+%\renewcommand{\headrulewidth}{0.4pt}
+
+%% Kapitel ab hier
+\input{Kapitel/01-Einleitung}
+\clearpage
+\input{Kapitel/02-Stand der Technik}
+\clearpage
+\input{Kapitel/03-Methodik}
+\clearpage
+\input{Kapitel/04-Konzeptentwicklung}
+\clearpage
+\input{Kapitel/05-Konzeptsumsetzung}
+\clearpage
+\input{Kapitel/06-Ergebnisse}
+\clearpage
+\input{Kapitel/07-Fazit und Ausblick}
+\clearpage
+\input{Kapitel/08-Zusammenfassung}
+\clearpage
+\printbibliography[heading=bibintoc, title={Literaturverzeichnis}]
+
+\input{Kapitel/100-Anhang}
+\clearpage
+\includepdf{misc/Background/HAW_Stil/Selbststaendigkeitserklaerung.pdf}
+
+\end{document}
+

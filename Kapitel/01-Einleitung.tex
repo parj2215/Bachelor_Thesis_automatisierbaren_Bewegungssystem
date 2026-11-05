@@ -1,0 +1,38 @@
+\section{Einleitung}
+\subsection{Motivation und Hintergrund}
+Die Automatisierung in der Produktion spielt in der Industrie eine wichtige Rolle, besonders im Bereich der Präzisionstechnik, wo die Anforderungen an Prozesssicherheit, Reproduzierbarkeit und gleichbleibende Produktqualität steigen. Dagegen führen die manuellen Montageprozesse zu einer Abhängigkeit von der Erfahrung des jeweiligen Bedienpersonals und sind nur eingeschränkt skalierbar. Zusätzlich werden hierfür Fachkräfte mit sehr spezifischen Fähigkeiten benötigt, deren Verfügbarkeit bei steigenden Produktionsmengen nicht immer gegeben ist, wodurch sich die Skalierbarkeit weiter einschränkt.\cite{Groover_Automation, Lotter_Montage}
+
+Die SmarAct GmbH entwickelt und fertigt hochpräzise Positioniersysteme für Anwendungen in den Lebenswissenschaften und der Lichtmikroskopie, in Hochenergie-Forschungs\-einrichtungen sowie in der Materialwissenschaft und Mikroskopie und in der Halbleiter- und Photonikindustrie.\cite{SmarAct_Company} Ein Produkt, das in hohen Stückzahlen hergestellt wird, ist der Positionierer vom Typ SLC (Stick-Slip Linear with Crossroller). Diese Systeme zeichnen sich durch eine Positioniergenauigkeit im Nanometerbereich, eine kompakte Bauweise sowie spielfreie Lager aus, die durch den Einsatz von Kreuzrollenführungen realisiert werden.\cite{SmarAct_SLC}
+
+Die mechanische Montage von Linearführungen erfolgt derzeit überwiegend manuell. Mit steigenden Produktionsmengen und Qualitätsanforderungen besteht jedoch die Notwendigkeit, diesen Montageprozess reproduzierbarer zu gestalten und langfristig zu automatisieren. Ziel ist es, die Prozessstabilität zu erhöhen und gleichzeitig die Produktionskapazität zu steigern.
+
+\subsection{Problemstellung}
+Die Montage von Linearführungen ist ein qualitätskritischer Prozessschritt bei der Produktion von hochpräzisen Positioniersystemen.\cite{Lotter_Montage} Insbesondere haben die seitliche Vorspannung des Führungspakets und das Anziehen des Schraubendrehers mit einem vorgegebenen Drehmoment einen wesentlichen Einfluss auf die Steifigkeit und Lebensdauer der Linearachsen.\cite{VDI2230, Roloff_Matek}
+
+Die seitliche Vorspannung bezeichnet das gezielte Einbringen einer Querlast in das Führungssystem, um einen spielfreien Kontakt zwischen Führungspaket und den Schlitten herzustellen und dadurch Nick- und Gier-Abweichungen der Linearachse zu reduzieren.
+
+Beim derzeitigen manuellen Montageprozess können Abweichungen bei der Ausrichtung zwischen den Führungsteilen und beim auf die Schrauben ausgeübten Drehmoment auftreten. Diese Abweichungen führen zu einer reduzierten Reproduzierbarkeit der Montageergebnisse, wie Ablaufsgenauigkeit und laterale Steifigkeit, und erhöhen den Aufwand für Tests und Nacharbeiten. Darüber hinaus ist eine kontinuierliche Überwachung und Dokumentation der Prozessparameter im manuellen Betrieb nur eingeschränkt möglich.\cite{Groover_Automation}
+
+Eine zusätzliche Herausforderung ergibt sich aus den unterschiedlichen Ausführungsvarianten der SLC-Positionierer. Je nach Bauform erfolgt die Vorspannung der Linearführungen entweder über integrierte mechanische Elemente oder über ein extern genutztes Vorspannsystem. Diese Variantenvielfalt muss bei der Entwicklung eines einheitlichen automatisierten Montageprozesses berücksichtigt werden und stellt besondere Anforderungen an die Flexibilität des zu entwickelnden Systems.
+
+\subsection{Wissenschaftliche und technische Relevanz}
+Aus wissenschaftlicher Sicht lässt sich diese Arbeit dem Bereich der Montage- und Automatisierungstechnik zuordnen. Die automatisierte Erzeugung definierter Vorspannkräfte und die kontrollierte Befestigung von Schrauben unter Berücksichtigung von Drehmoment- und Kraftwerten gehören zu den zentralen Themen der Präzisionsmontage.\cite{Lotter_Montage,Groover_Automation}
+
+Aus technischer Sicht leistet diese Arbeit einen Beitrag zur Entwicklung eines modularen und anpassungsfähigen Montagesystems, das verschiedene Produktvarianten innerhalb eines standardisierten Prozesses verarbeiten kann. Durch den Einsatz motorisierter Bewegungssysteme, geeigneter Sensorik und einer strukturierten Steuerungsarchitektur lassen sich Montageprozesse nicht nur automatisieren, sondern auch validieren und dokumentieren.\cite{Kagermann_I40}
+
+Die Ergebnisse sind sowohl für die industrielle Praxis als auch für die weitere Entwicklungsarbeit relevant, da sie die Grundlage für den späteren Transfer in einen Serienfertigungsprozess bilden.
+
+\subsection{Zielsetzung der Arbeit}
+
+Das Ziel dieser Bachelorarbeit ist die Entwicklung eines automatisierbaren Systems zur Montage von SLC-17- und SLC-24-Linearführungen mit und ohne Wände. Das Ziel ist die Entwicklung eines Montagekonzepts, das eine präzise Vorspannung der Führungen und einen kontrollierten Schraubvorgang mit definiertem Drehmoment ermöglicht.
+
+Im Rahmen der Arbeit werden zunächst die bestehenden Montageprozesse analysiert und daraus die Anforderungen abgeleitet. Auf dieser Grundlage werden geeignete Konzepte entwickelt, bewertet und konstruiert. Darüber hinaus werden geeignete Steuerungshardware und -software ausgewählt, wodurch die grundlegenden Systemfunktionen validiert werden.
+
+\subsection{Vorgehensweise und Aufbau der Arbeit}
+Die Bachelorarbeit ist in mehrere Kapitel unterteilt, die aufeinander aufbauen und den systematischen Entwicklungsprozess des Systems beschreiben.
+
+Kapitel 2 beginnt mit einer Beschreibung von Industrie 4.0 und einer Analyse des bestehenden Montageprozesses für Linearführungen. Insbesondere werden die Prozessschritte identifiziert, die automatisiert werden sollen. Kapitel 3 beschreibt die methodische Vorgehensweise der Arbeit. Hier wird die VDI-Richtlinie 2221 \enquote{Entwicklung technischer Produkte und Systeme} als theoretische Grundlage für den weiteren Entwicklungsprozess vorgestellt.
+
+Kapitel 4 befasst sich mit der Entwicklung und Bewertung verschiedener Konzepte zur Umsetzung der Vorspannung, des Einschraubvorgangs und der erforderlichen Bewegungen. Das ausgewählte Konzept wird dann in Kapitel 5 umgesetzt. Kapitel 6 befasst sich mit der Validierung des entwickelten Systems und der Auswertung der Ergebnisse.
+
+In Kapitel 7 werden die Ergebnisse diskutiert, eine Schlussfolgerung abgeleitet und ein Ausblick auf mögliche Weiterentwicklungen gegeben. Abschließend fasst Kapitel 8 diese Arbeit zusammen.

@@ -1,0 +1,53 @@
+\maketitle
+
+% =========================================================
+% Frontmatter (Titel/Abstract/Danksagung) OHNE Kopfzeile
+% =========================================================
+\pagestyle{empty} % oder 'empty', wenn du GAR keine Kopf-/Fußzeile willst
+
+\input{misc/Background/HAW_Stil/Abstractpage}
+\input{misc/Background/Dankaussagung}
+\includepdf[pages={-}]{misc/Background/aufgabenstellung.pdf}
+
+\clearpage
+
+% =========================================================
+% Frontmatter-Nummerierung (römisch)
+% =========================================================
+\pagenumbering{Roman}
+\setcounter{page}{1}
+
+% =========================================================
+% AB HIER: Kopfzeile AKTIV (ab Inhaltsverzeichnis)
+% =========================================================
+\pagestyle{fancy}
+
+% Sicherheit: genügend Platz für Header
+\setlength{\headheight}{18pt}
+
+% Sicherheit: Kopfzeilenlinie erzwingen (falls irgendwo auf 0 gesetzt)
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Inhaltsverzeichnis
+\maintoc
+\clearpage
+
+% Abbildungs- und Tabellenverzeichnis
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+
+% Abkürzungsverzeichnis
+\printglossary[type=acronym,style=acrotab, title = Abkürzungen]
+% Symbolverzeichnis
+\printglossary[type=symbols, style=symboltablr, title = Nomenklatur]
+\clearpage
+
+% =========================================================
+% Ab hier: Hauptteil (arabisch)
+% =========================================================
+\setcounter{table}{0}
+\renewcommand{\arraystretch}{1.15}
+\pagenumbering{arabic}

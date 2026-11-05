@@ -1,0 +1,139 @@
+
+\renewcommand*{\maketitle}{
+  \begin{titlepage}%
+  \hawCover
+  \hawtitelpage
+  \end{titlepage}
+}
+
+
+%%%%%%%%%%%TITELSEITE%%%%%%%%%%%%%%%%%%
+
+\newcommand*{\hawCover}{%
+{\fontfamily{phv}\selectfont
+
+\fontsize{11pt}{12pt}\selectfont
+  \begingroup
+  \thispagestyle{empty}%
+  \enlargethispage{\footskip}%
+
+
+  \definecolor{HAWBannerColor}{rgb}{0.0549,0.5647,0.35294}
+
+
+%% Streng vertraulich if needed
+\definecolor{vertraulich}{rgb}{1.0,0.4,0.0} 
+\begin{textblock*}{\textwidth}(75mm,9mm)
+  \begin{minipage}[b][0cm][b]{\textwidth}
+  \hfuzz=20pt
+  \fontsize{16pt}{16pt}
+  \selectfont
+    \begin{flushleft}
+    	 \textcolor{vertraulich}{STRENG VERTRAULICH} 
+    \end{flushleft}
+  \end{minipage}
+\end{textblock*}
+
+
+  %% HAW logo
+  \begin{textblock*}{2cm}(10cm,1cm)
+    \begin{minipage}[r]{\textwidth}%
+      \includegraphics[width=10cm]{misc/Background/Logos/HAW_logo.eps}%
+    \end{minipage}%
+  \end{textblock*}
+
+
+  %% color bar
+  \begin{textblock*}{9.6cm}(0cm,9cm)
+    \colorbox{HAWBannerColor}{%
+      %% use a minipage that is the size of the colored banner
+      %% center the minipage
+      \begin{minipage}[l][9.6cm][c]{\paperwidth}%
+        %% put the box on the right side
+        \hspace*{0.25\textwidth}
+        \parbox[t]{0.65\textwidth}{%
+          {\fontsize{20pt}{20pt}\selectfont \raggedleft\textbf{\Dokumentenart}\\
+          \vspace{1.5cm}
+          \fontsize{14pt}{20pt}\selectfont\Autor\\
+          \vspace{0.5cm}
+          \fontsize{18pt}{20pt}\selectfont\bfseries\Titel
+
+        }}%
+      \end{minipage}%
+    }
+  \end{textblock*}
+
+\newlength{\hawypos}
+  \addtolength{\hawypos}{-10cm}
+   \newlength{\hawxpos}\newlength{\hawfw}
+  \setlength{\hawxpos}{2.0cm}
+  \setlength{\hawypos}{\paperheight}
+  \addtolength{\hawypos}{-3.8cm}
+    \setlength{\hawfw}{\paperwidth}
+  \addtolength{\hawfw}{-3.6cm}
+ 
+
+
+  \begin{textblock*}{2cm}(\hawxpos,\hawypos)
+    \begin{minipage}[c]{\hawfw}
+      \centering
+      \settowidth{\hawfw}{Department Fahrzeugtechnik und Flugzeugbau}
+      \parbox[t]{\hawfw}{%
+        \fontsize{10pt}{12pt}
+        \selectfont%
+        \textit{Fakultät Luftfahrt- und Fahrzeugsysteme}\\
+      }\hfill
+      \settowidth{\hawfw}{Faculty of Aerospace and Vehicle Systems}
+      \parbox[t]{\hawfw}{%
+        \fontsize{10pt}{12pt}
+        \selectfont \raggedleft%
+        \textit{Faculty of Aerospace and Vehicle Systems}\\ 
+      }
+    \end{minipage}
+  \end{textblock*}
+  \null\newpage
+  \endgroup
+}
+}
+
+%%%%%%%%%%%INFOSEITE%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\hawtitelpage}{
+{\fontfamily{phv}\selectfont \thispagestyle{empty}
+\newgeometry{left=3.5cm,bottom=3.5cm,top=0cm}
+ \vspace*{5cm}
+  \begin{minipage}[b]{\textwidth}
+    \fontsize{18pt}{20pt}
+    \selectfont
+    \begin{center}
+     \bfseries \Autor \\
+     \vspace{10pt}
+     \bfseries \Titel
+    \end{center}
+  \end{minipage}
+  
+
+  % Important information
+      \vfill
+      \fontfamily{phv}\selectfont
+      \fontsize{12pt}{13pt}
+      \selectfont
+        
+      
+        \Dokumentenart ~eingereicht im Rahmen der \Pruefungsart \\ \\
+	    im Studiengang Mechatronik \\
+        der Fakultät Luftfahrt- und Fahrzeugsysteme \\
+        der Hochschule für Angewandte Wissenschaften Hamburg\\
+        \\
+        \Firma\\ 
+        \\
+        \Erstpruefer \\
+        \Zweitpruefer \\
+        \\
+        \Betreuer \\ 
+        \\
+        Abgabedatum: \Datum 
+      
+\restoregeometry
+}
+}

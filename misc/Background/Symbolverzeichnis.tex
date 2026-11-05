@@ -1,0 +1,176 @@
+\RequirePackage[symbols,acronym,xindy={language=german-din},toc,nostyles]{glossaries}
+\RequirePackage{tabularx}
+\RequirePackage{ltablex}  % ltablex kombiniert longtable und tabularx, optional
+\RequirePackage{booktabs}
+\RequirePackage{environ}
+
+\glsdisablehyper
+
+\keepXColumns  % für tabularx in mehrspaltigen Umgebungen, gut so
+
+\makeglossaries
+
+% =============================
+% Definition der Symbolgruppen
+% =============================
+
+% Formelzeichen
+\newglossaryentry{Formelzeichen}{%
+  type=symbols,%
+  name={\bfseries Formelzeichen},%
+  description={\nopostdesc},%
+  sort={a}%
+}
+
+% Griechische Buchstaben
+\newglossaryentry{greekletter}{%
+  type=symbols,%
+  name={\bfseries Griechische Buchstaben},%
+  description={\nopostdesc},%
+  sort={b}%
+}
+
+% Indices
+\newglossaryentry{Indices}{%
+  type=symbols,%
+  name={\bfseries Indizierungen},%
+  description={\nopostdesc},%
+  sort={c}%
+}
+
+% ===================================
+% Neue Symbole per Makros definieren
+% ===================================
+
+\newcommand*{\newformulasymbol}[4][]{%
+  \newglossaryentry{#2}{%
+    type=symbols,
+    name={#2},
+    description={\nopostdesc},
+    symbol={\ensuremath{#3}},
+    user1={\ensuremath{\left[\mathrm{#4}\right]}},
+    sort={#3},
+    parent={Formelzeichen}
+  }%
+}
+
+\newcommand*{\newgreek}[4][]{%
+  \newglossaryentry{#2}{%
+    type=symbols,
+    name={#2},
+    description={\nopostdesc},
+    symbol={\ensuremath{#3}},
+    user1={\ensuremath{\left[\mathrm{#4}\right]}},
+    sort={#3},
+    parent={greekletter}
+  }%
+}
+
+\newcommand*{\newindice}[3][]{%
+  \newglossaryentry{#2}{%
+    type=symbols,
+    name={#2},
+    description={\nopostdesc},
+    symbol={\ensuremath{()_{\text{#3}}}},
+    user1={\ensuremath{\left[\mathrm{-}\right]}},
+    sort={#3},
+    parent={Indices}
+  }%
+}
+
+% ===== Anzeigeformat für Symbole =====
+\defglsentryfmt[symbols]{%
+  \ifmmode
+    \glssymbol{\glslabel}%
+  \else
+    \glsgenentryfmt~\glsentrysymbol{\glslabel}%
+  \fi
+}
+
+% ===== Glossar-Stil für Symbolverzeichnis als Tabelle =====
+\NewEnviron{tableenv}{%
+  \renewcommand{\arraystretch}{1.2}%
+  \begin{tabularx}{\columnwidth}{l@{\hspace{4em}} l@{\hspace{4em}} X}%
+    \BODY
+  \end{tabularx}%
+}
+
+\newglossarystyle{symboltablr}{%
+  \newcommand*\symbollevel{-1}%
+  \renewenvironment{theglossary}{\tableenv}{\endtableenv}%
+  \renewcommand*{\glsgroupheading}[1]{}%
+  \renewcommand*{\glsgroupskip}{}%
+  \newcommand*\symbolhead{%
+    \toprule
+    \bfseries Symbol & \bfseries Einheit & \bfseries Bedeutung \\ \midrule
+  }%
+  \renewcommand*{\glossaryheader}{%
+    \endfirsthead
+    \symbolhead
+    \endhead
+    \midrule
+    \endfoot
+    \bottomrule
+    \endlastfoot
+    \gdef\symbollevel{-1}%
+  }%
+  \renewcommand*{\glossentry}[2]{%
+    \ifglshaschildren{##1}{%
+      \ifnum\symbollevel>0
+        \tabularnewline\bottomrule\tabularnewline[\smallskipamount]%
+      \fi
+      \gdef\symbollevel{0}%
+      \tabularnewline[\arraystretch\dimexpr-\ht\strutbox-\dp\strutbox\relax]%
+      \multicolumn{3}{l}{\glossentryname{##1}}%
+    }%
+  }%
+  \renewcommand*{\subglossentry}[3]{%
+    \ifnum\symbollevel=0
+      \\[\medskipamount]\symbolhead
+    \fi
+    \gdef\symbollevel{##1}%
+    \glstarget{##2}{\glossentrysymbol{##2}} & \glsentryuseri{##2} & \glossentryname{##2} \\
+  }%
+}
+
+% ===== Glossar-Stil für Abkürzungsverzeichnis als Tabelle =====
+\NewEnviron{acroenv}{%
+  \renewcommand{\arraystretch}{1.2}%
+  \begin{tabularx}{\columnwidth}{l@{\hspace{4em}} X}%
+    \BODY
+  \end{tabularx}%
+}
+
+\newglossarystyle{acrotab}{%
+  \renewenvironment{theglossary}{\acroenv}{\endacroenv}%
+  \renewcommand*{\glsgroupheading}[1]{}%
+  \renewcommand*{\glsgroupskip}{}%
+  \newcommand*\acrohead{%
+    \toprule
+    \bfseries Abkürzung & \bfseries Bedeutung \\ \midrule
+  }%
+  \renewcommand*{\glossaryheader}{%
+    \acrohead
+    \endfirsthead
+    \acrohead
+    \endhead
+    \midrule
+    \endfoot
+    \bottomrule
+    \endlastfoot
+  }%
+  \renewcommand*{\glossentry}[2]{%
+    \glsentryitem{##1}%
+    \glstarget{##1}{\glossentryname{##1}} & \glsentrydesc{##1} \\
+  }%
+}
+
+% ===== Alternative Darstellung Abkürzungsverzeichnis (Liste) =====
+\newglossarystyle{acrolist}{%
+  \renewenvironment{theglossary}{\begin{description}}{\end{description}}%
+  \renewcommand*{\glsgroupheading}[1]{}%
+  \renewcommand*{\glsgroupskip}{}%
+  \renewcommand*{\glossentry}[2]{%
+    \item[\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}}] \glsentrydesc{##1}%
+  }%
+}
